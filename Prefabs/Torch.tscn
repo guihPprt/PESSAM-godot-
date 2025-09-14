@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://bu4e6vs2gnijc"]
+
+[ext_resource type="Texture2D" uid="uid://dg5vhavpn5j4c" path="res://Assets/tileset.png" id="1_bsqku"]
+[ext_resource type="Script" uid="uid://cghq8xm5unp3c" path="res://Prefabs/Torch/torch.gd" id="2_0m87b"]
+[ext_resource type="FontFile" uid="uid://dn24mngx31dfh" path="res://Assets/Fonts/Early GameBoy.ttf" id="3_27nok"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m87b"]
+atlas = ExtResource("1_bsqku")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27nok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m87b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_7u6cd"]
+offsets = PackedFloat32Array(0, 0.530435)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rd27c"]
+gradient = SubResource("Gradient_7u6cd")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsqku"]
+radius = 26.0192
+
+[sub_resource type="LabelSettings" id="LabelSettings_0m87b"]
+font = ExtResource("3_27nok")
+font_size = 8
+
+[node name="Torch" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_27nok")
+script = ExtResource("2_0m87b")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(5.25, 5.25)
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_rd27c")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bsqku")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -6.0
+offset_top = -12.0
+offset_right = 8.0
+offset_bottom = -0.833333
+text = "{E}"
+label_settings = SubResource("LabelSettings_0m87b")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

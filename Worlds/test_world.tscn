@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=4 uid="uid://c4pbsg3uuoixp"]
+
+[ext_resource type="Texture2D" uid="uid://dg5vhavpn5j4c" path="res://Assets/tileset.png" id="1_3xrbq"]
+[ext_resource type="Texture2D" uid="uid://ds3e06pgpaxgv" path="res://Assets/house1_bg.png" id="1_jbqd0"]
+[ext_resource type="PackedScene" uid="uid://dngwabivtpisl" path="res://Prefabs/Player/Player.tscn" id="2_0n0fo"]
+[ext_resource type="PackedScene" uid="uid://bu4e6vs2gnijc" path="res://Prefabs/Torch.tscn" id="4_vn3tm"]
+[ext_resource type="PackedScene" uid="uid://c51uw2t2xpgrr" path="res://Prefabs/UI/ui.tscn" id="5_7u6cd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vn3tm"]
+blend_mode = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0n0fo"]
+texture = ExtResource("1_3xrbq")
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+1:0/0/terrains_peering_bit/top_left_corner = 0
+1:0/0/terrains_peering_bit/top_side = 0
+1:0/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_jbqd0"]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_0n0fo")
+
+[sub_resource type="Gradient" id="Gradient_7u6cd"]
+offsets = PackedFloat32Array(0, 0.530435)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ypwe8"]
+gradient = SubResource("Gradient_7u6cd")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_vn3tm")
+position = Vector2(117, -1)
+texture = ExtResource("1_jbqd0")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 512)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAACAAMAAAABAAAAAAABAAMAAAABAAAAAAAAAAMAAAABAAAAAAD//wMAAAABAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAAAAAQAAAABAAAAAAD+/wIAAAABAAAAAAD+/wMAAAABAAAAAAD+/wQAAAABAAAAAAD//wQAAAABAAAAAAADAAQAAAABAAAAAAAEAAQAAAABAAAAAAADAAMAAAABAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAMAAAABAAAAAAAGAAMAAAABAAAAAAAOAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAKAAQAAAABAAAAAAAKAAMAAAABAAAAAAAJAAQAAAABAAAAAAAJAAMAAAABAAAAAAAIAAQAAAABAAAAAAAIAAMAAAABAAAAAAAHAAQAAAABAAAAAAAHAAMAAAABAAAAAAAGAAQAAAABAAAAAAAFAAQAAAABAAAAAAAEAAMAAAABAAAAAAAOAAQAAAABAAAAAAANAAQAAAABAAAAAAAMAAQAAAABAAAAAAALAAQAAAABAAAAAAASAAQAAAABAAAAAAASAAMAAAAAAAAAAAARAAQAAAABAAAAAAARAAMAAAAAAAAAAAAQAAQAAAABAAAAAAAQAAMAAAAAAAAAAAAPAAQAAAABAAAAAAAPAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_jbqd0")
+
+[node name="Player" parent="." instance=ExtResource("2_0n0fo")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
+limit_left = -32
+limit_top = -90
+limit_right = 300
+limit_bottom = 80
+position_smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+scale = Vector2(5.625, 5.625)
+shadow_filter = 1
+texture = SubResource("GradientTexture2D_ypwe8")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(117, -1)
+color = Color(0.336608, 0.336608, 0.336608, 1)
+
+[node name="Torch" parent="." instance=ExtResource("4_vn3tm")]
+position = Vector2(120, 24)
+
+[node name="UI" parent="." instance=ExtResource("5_7u6cd")]

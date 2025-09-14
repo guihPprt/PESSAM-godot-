@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://dngwabivtpisl"]
+
+[ext_resource type="Script" uid="uid://rbi2qtl0rgn8" path="res://Prefabs/Player/player.gd" id="1_1cl7s"]
+[ext_resource type="Texture2D" uid="uid://iaspyco4jxxo" path="res://Assets/player.png" id="1_t5con"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4lgr"]
+size = Vector2(5, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cl7s"]
+atlas = ExtResource("1_t5con")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4lgr"]
+atlas = ExtResource("1_t5con")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op78j"]
+atlas = ExtResource("1_t5con")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnr8y"]
+atlas = ExtResource("1_t5con")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5virf"]
+atlas = ExtResource("1_t5con")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip1bf"]
+atlas = ExtResource("1_t5con")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_op78j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cl7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4lgr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op78j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnr8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5virf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip1bf")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_1cl7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_c4lgr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_op78j")
+animation = &"walking"
