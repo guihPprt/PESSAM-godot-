@@ -1,0 +1,137 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbj5uvtv6iy28"]
+
+[ext_resource type="Script" uid="uid://dmpgctqhqpgl1" path="res://Inventory/inv_ui.gd" id="1_actet"]
+[ext_resource type="Texture2D" uid="uid://dihw4lx00wyb0" path="res://Assets/inv_bg.png" id="2_ltxgc"]
+[ext_resource type="PackedScene" uid="uid://brfm6oadogn65" path="res://Inventory/inv_ui_slot.tscn" id="3_ltxgc"]
+[ext_resource type="FontFile" uid="uid://dn24mngx31dfh" path="res://Assets/Fonts/Early GameBoy.ttf" id="4_s8fnp"]
+[ext_resource type="Texture2D" uid="uid://8ilnt27rit8g" path="res://Assets/slot.png" id="5_mnjyx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mnjyx"]
+font = ExtResource("4_s8fnp")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b3ftj"]
+font = ExtResource("4_s8fnp")
+font_color = Color(0, 0, 0, 1)
+
+[node name="inv_ui" type="Control"]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_actet")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 177.0
+offset_right = 903.0
+offset_bottom = 465.0
+texture = ExtResource("2_ltxgc")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 360.0
+offset_bottom = 256.0
+columns = 5
+
+[node name="inv_ui_slot1" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot7" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot10" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot11" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot13" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot14" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="inv_ui_slot15" parent="NinePatchRect/GridContainer" instance=ExtResource("3_ltxgc")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 56.0
+text = "Inventario"
+label_settings = SubResource("LabelSettings_mnjyx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_top = 288.0
+offset_right = 640.0
+offset_bottom = 328.0
+texture = ExtResource("5_mnjyx")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Label2" type="Label" parent="NinePatchRect/NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 632.0
+offset_bottom = 40.0
+text = "-E- Para Equipar                    -Q- para soltar"
+label_settings = SubResource("LabelSettings_b3ftj")
+vertical_alignment = 1
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 56.0
+offset_right = 568.0
+offset_bottom = 200.0
+texture = ExtResource("5_mnjyx")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/NinePatchRect2"]
+scale = Vector2(9, 9)
+centered = false

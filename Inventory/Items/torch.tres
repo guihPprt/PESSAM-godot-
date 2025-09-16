@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://b7ibe8t6er4y5"]
+
+[ext_resource type="Script" uid="uid://bchodqd01thf6" path="res://Inventory/inventory_item.gd" id="1_rmbqb"]
+[ext_resource type="Texture2D" uid="uid://2grl66axl41l" path="res://Assets/Icons/torch.png" id="2_fe32h"]
+
+[resource]
+script = ExtResource("1_rmbqb")
+name = "Torch"
+texture = ExtResource("2_fe32h")
+prefab_path = "res://Prefabs/Torch/Torch.tscn"
+metadata/_custom_type_script = "uid://bchodqd01thf6"

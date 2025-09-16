@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dcp2scv4n1j1a"]
+
+[ext_resource type="Script" uid="uid://bchodqd01thf6" path="res://Inventory/inventory_item.gd" id="1_0cf12"]
+
+[sub_resource type="Gradient" id="Gradient_eed5j"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0cf12"]
+gradient = SubResource("Gradient_eed5j")
+
+[resource]
+script = ExtResource("1_0cf12")
+name = ""
+texture = SubResource("GradientTexture2D_0cf12")
+prefab_path = "res://Prefabs/Torch/Torch.tscn"
+metadata/_custom_type_script = "uid://bchodqd01thf6"
