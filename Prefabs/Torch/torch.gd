@@ -4,9 +4,28 @@ extends RigidBody2D
 
 var prox = false
 var player = null
+
+var _dialog_data: Dictionary = {
+	0: {
+		"faceset": "res://Dialog/Assets/faceset_player.png",
+		"dialog": "CARAI VIADO UMA TOCHA",
+		"title": "Player"
+	},
+	1: {
+		"faceset": "res://Assets/Icons/torch.png",
+		"dialog": "CARAI VIADO UMA MULHER DEPRESSIVA QUE VAI SE MATAR",
+		"title": "Tocha"
+	}
+}
+
+@export_category("HUD")
+var _hud: CanvasLayer
+
+const _DIALOG_SCREEN: PackedScene = preload("res://Dialog/dialog_screen.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	_hud = get_tree().current_scene.get_node("HUD")
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,6 +34,9 @@ func _process(delta: float) -> void:
 	
 	if prox:
 		if Input.is_action_just_pressed("e"):
+			var _new_dialog: DialogScreen = _DIALOG_SCREEN.instantiate()
+			_new_dialog.data = _dialog_data
+			_hud.add_child(_new_dialog)
 			player.collect(item)
 			queue_free()
 

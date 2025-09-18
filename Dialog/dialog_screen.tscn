@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3sqqt48ygpaq"]
+
+[ext_resource type="Script" uid="uid://bpev50cauhg73" path="res://Dialog/dialog_screen.gd" id="1_fghlt"]
+[ext_resource type="Texture2D" uid="uid://dihw4lx00wyb0" path="res://Assets/inv_bg.png" id="1_p7wbi"]
+[ext_resource type="Texture2D" uid="uid://8ilnt27rit8g" path="res://Assets/slot.png" id="2_ilfcd"]
+[ext_resource type="Texture2D" uid="uid://dj3r4hwe7fls3" path="res://Dialog/Assets/faceset_player.png" id="3_fghlt"]
+[ext_resource type="FontFile" uid="uid://dn24mngx31dfh" path="res://Assets/Fonts/Early GameBoy.ttf" id="4_ilfcd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fghlt"]
+line_spacing = 0.0
+font = ExtResource("4_ilfcd")
+font_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 1, 1, 0.6)
+
+[node name="DialogScreen" type="Control" node_paths=PackedStringArray("_name", "_dialog", "_faceset")]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -398.0
+offset_top = -228.0
+offset_right = 402.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+mouse_filter = 2
+script = ExtResource("1_fghlt")
+_name = NodePath("Background/HContainer/VContainer/Name")
+_dialog = NodePath("Background/HContainer/VContainer/Dialog")
+_faceset = NodePath("Background/HContainer/Border/FaceSet")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.8980392)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p7wbi")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="HContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = -85.0
+offset_right = 385.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Border" type="NinePatchRect" parent="Background/HContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+texture = ExtResource("2_ilfcd")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="FaceSet" type="TextureRect" parent="Background/HContainer/Border"]
+custom_minimum_size = Vector2(180, 170)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fghlt")
+expand_mode = 1
+
+[node name="VContainer" type="VBoxContainer" parent="Background/HContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="Background/HContainer/VContainer"]
+layout_mode = 2
+text = "Player"
+label_settings = SubResource("LabelSettings_fghlt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dialog" type="RichTextLabel" parent="Background/HContainer/VContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.5294118)
+theme_override_fonts/normal_font = ExtResource("4_ilfcd")
+text = "asdas"

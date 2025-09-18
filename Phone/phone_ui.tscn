@@ -1,0 +1,171 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfveyhl8fhyrn"]
+
+[ext_resource type="Script" uid="uid://c2io2bciam7i1" path="res://Phone/phone_ui.gd" id="1_k6hor"]
+[ext_resource type="Texture2D" uid="uid://c237qslpdpbjn" path="res://Assets/Controller/arrow.png" id="2_74sq6"]
+[ext_resource type="Script" uid="uid://dbbr7lv1si4ht" path="res://Phone/ui_normal.gd" id="2_l1mtn"]
+[ext_resource type="Texture2D" uid="uid://cfgh5ieffnlkx" path="res://Assets/Controller/y.png" id="3_80jty"]
+[ext_resource type="Texture2D" uid="uid://3l738odq21f" path="res://Assets/Controller/b.png" id="4_l1mtn"]
+[ext_resource type="Texture2D" uid="uid://cri6pcrrxp5gl" path="res://Assets/Controller/x.png" id="5_0w6ms"]
+[ext_resource type="Texture2D" uid="uid://b2cwpr7gnvn88" path="res://Assets/Controller/a.png" id="6_4wvis"]
+[ext_resource type="Script" uid="uid://cw1ohya2guhqk" path="res://Phone/ui_inventory.gd" id="8_0w6ms"]
+[ext_resource type="Script" uid="uid://c6lqhw8l8uavq" path="res://Phone/ui_dialog.gd" id="9_4wvis"]
+
+[node name="PhoneUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k6hor")
+
+[node name="Normal" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_l1mtn")
+
+[node name="Left" type="TouchScreenButton" parent="Normal"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(192, 576)
+rotation = 3.1415927
+scale = Vector2(8, 8)
+texture_normal = ExtResource("2_74sq6")
+texture_pressed = ExtResource("2_74sq6")
+
+[node name="Right" type="TouchScreenButton" parent="Normal"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(256, 448)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("2_74sq6")
+texture_pressed = ExtResource("2_74sq6")
+
+[node name="Y" type="TouchScreenButton" parent="Normal"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(840, 256)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("3_80jty")
+texture_pressed = ExtResource("3_80jty")
+
+[node name="B" type="TouchScreenButton" parent="Normal"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(960, 376)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("4_l1mtn")
+texture_pressed = ExtResource("4_l1mtn")
+
+[node name="X" type="TouchScreenButton" parent="Normal"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(712, 368)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("5_0w6ms")
+texture_pressed = ExtResource("5_0w6ms")
+
+[node name="A" type="TouchScreenButton" parent="Normal"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(832, 488)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("6_4wvis")
+texture_pressed = ExtResource("6_4wvis")
+
+[node name="Inventory" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_0w6ms")
+
+[node name="Y" type="TouchScreenButton" parent="Inventory"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(1016, 512)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("3_80jty")
+texture_pressed = ExtResource("3_80jty")
+
+[node name="B" type="TouchScreenButton" parent="Inventory"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(880, 512)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("4_l1mtn")
+texture_pressed = ExtResource("4_l1mtn")
+
+[node name="X" type="TouchScreenButton" parent="Inventory"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(744, 512)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("5_0w6ms")
+texture_pressed = ExtResource("5_0w6ms")
+
+[node name="Left" type="TouchScreenButton" parent="Inventory"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(200, 512)
+rotation = 3.1415927
+scale = Vector2(8, 8)
+texture_normal = ExtResource("2_74sq6")
+texture_pressed = ExtResource("2_74sq6")
+
+[node name="Right" type="TouchScreenButton" parent="Inventory"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(312, 392)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("2_74sq6")
+texture_pressed = ExtResource("2_74sq6")
+
+[node name="Up" type="TouchScreenButton" parent="Inventory"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(192, 400)
+rotation = -1.5707964
+scale = Vector2(8, 8)
+texture_normal = ExtResource("2_74sq6")
+texture_pressed = ExtResource("2_74sq6")
+
+[node name="Down" type="TouchScreenButton" parent="Inventory"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(320, 504)
+rotation = -4.712389
+scale = Vector2(8, 8)
+texture_normal = ExtResource("2_74sq6")
+texture_pressed = ExtResource("2_74sq6")
+
+[node name="Dialog" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_4wvis")
+
+[node name="A" type="TouchScreenButton" parent="Dialog"]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(952, 448)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("6_4wvis")
+texture_pressed = ExtResource("6_4wvis")
+
+[connection signal="pressed" from="Normal/Left" to="Normal" method="_on_left_button_down"]
+[connection signal="released" from="Normal/Left" to="Normal" method="_on_left_button_up"]
+[connection signal="pressed" from="Normal/Right" to="Normal" method="_on_right_button_down"]
+[connection signal="released" from="Normal/Right" to="Normal" method="_on_right_button_up"]
+[connection signal="pressed" from="Normal/Y" to="Normal" method="_on_y_button_down"]
+[connection signal="released" from="Normal/Y" to="Normal" method="_on_y_button_up"]
+[connection signal="pressed" from="Normal/B" to="Normal" method="_on_b_button_down"]
+[connection signal="released" from="Normal/B" to="Normal" method="_on_b_button_up"]
+[connection signal="pressed" from="Normal/X" to="Normal" method="_on_x_button_down"]
+[connection signal="released" from="Normal/X" to="Normal" method="_on_x_button_up"]
+[connection signal="pressed" from="Normal/A" to="Normal" method="_on_a_button_down"]
+[connection signal="released" from="Normal/A" to="Normal" method="_on_a_button_up"]
+[connection signal="pressed" from="Inventory/Y" to="Inventory" method="_on_y_button_down"]
+[connection signal="released" from="Inventory/Y" to="Inventory" method="_on_y_button_up"]
+[connection signal="pressed" from="Inventory/B" to="Inventory" method="_on_b_button_down"]
+[connection signal="released" from="Inventory/B" to="Inventory" method="_on_b_button_up"]
+[connection signal="pressed" from="Inventory/X" to="Inventory" method="_on_x_button_down"]
+[connection signal="released" from="Inventory/X" to="Inventory" method="_on_x_button_up"]
+[connection signal="pressed" from="Inventory/Left" to="Inventory" method="_on_left_button_down"]
+[connection signal="released" from="Inventory/Left" to="Inventory" method="_on_left_button_up"]
+[connection signal="pressed" from="Inventory/Right" to="Inventory" method="_on_right_button_down"]
+[connection signal="released" from="Inventory/Right" to="Inventory" method="_on_right_button_up"]
+[connection signal="pressed" from="Inventory/Up" to="Inventory" method="_on_up_button_down"]
+[connection signal="released" from="Inventory/Up" to="Inventory" method="_on_up_button_up"]
+[connection signal="pressed" from="Inventory/Down" to="Inventory" method="_on_down_button_down"]
+[connection signal="released" from="Inventory/Down" to="Inventory" method="_on_down_button_up"]
+[connection signal="pressed" from="Dialog/A" to="Dialog" method="_on_a_button_down"]
+[connection signal="released" from="Dialog/A" to="Dialog" method="_on_a_button_up"]

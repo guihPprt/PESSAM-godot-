@@ -76,9 +76,11 @@ func _process(delta: float) -> void:
 	position.y = y_offset
 
 func open():
+	Global.on_inv = true
 	y_raw_offset = 0
 	is_open = true
 
 func close():
+	Global.on_inv = false
 	y_raw_offset = 600
 	is_open = false

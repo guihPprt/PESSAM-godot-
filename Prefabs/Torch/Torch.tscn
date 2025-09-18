@@ -23,7 +23,7 @@ radius = 26.0192
 font = ExtResource("3_27nok")
 font_size = 8
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rd27c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb44k"]
 atlas = ExtResource("1_bsqku")
 region = Rect2(32, 0, 16, 16)
 
@@ -31,11 +31,11 @@ region = Rect2(32, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rd27c")
+"texture": SubResource("AtlasTexture_bb44k")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6y32w"]
@@ -58,6 +58,7 @@ texture = SubResource("GradientTexture2D_rd27c")
 shape = SubResource("CircleShape2D_bsqku")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -11.0
 offset_top = -12.0
 offset_right = 13.0
@@ -67,6 +68,7 @@ label_settings = SubResource("LabelSettings_0m87b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_n2hp1")
+frame_progress = 0.9820162
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
