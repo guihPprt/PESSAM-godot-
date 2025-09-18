@@ -1,3 +1,16 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+Build/
+pessam.apk
+pessam.console.exe
+pessam.exe
+pessa.html
+pessam.audio.position.worklet.js
+pessam.audio.worklet.js
+pessam.apk.idsig
+pessam.apple-touch-icon.png
+pessam.pck
+pessam.icon.png
+pessam.wasm
+pessam.x86_64

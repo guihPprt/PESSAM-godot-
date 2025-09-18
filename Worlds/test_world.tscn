@@ -108,9 +108,8 @@ editor_draw_limits = true
 position = Vector2(117, -1)
 color = Color(0.23392546, 0.23392546, 0.23392543, 1)
 
-[node name="Torch" parent="." node_paths=PackedStringArray("_hud") instance=ExtResource("4_vn3tm")]
+[node name="Torch" parent="." instance=ExtResource("4_vn3tm")]
 position = Vector2(120, 24)
-_hud = NodePath("../HUD")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -122,7 +121,7 @@ position = Vector2(233, 17)
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("7_u04th")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="MobileHUD" type="CanvasLayer" parent="."]
 
-[node name="PhoneUI" parent="CanvasLayer" instance=ExtResource("6_tbl1j")]
+[node name="PhoneUI" parent="MobileHUD" instance=ExtResource("6_tbl1j")]
 z_index = 10
