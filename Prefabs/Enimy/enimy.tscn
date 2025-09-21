@@ -1,0 +1,120 @@
+[gd_scene load_steps=16 format=3 uid="uid://bbrkcmjh6lfvu"]
+
+[ext_resource type="Script" uid="uid://bnil2ncoe6ln0" path="res://Prefabs/Enimy/enimy.gd" id="1_vp3cu"]
+[ext_resource type="PackedScene" uid="uid://uhdxtdh88e7" path="res://Prefabs/life_bar.tscn" id="2_lggb4"]
+[ext_resource type="Texture2D" uid="uid://dihw4lx00wyb0" path="res://Assets/inv_bg.png" id="3_xumpy"]
+[ext_resource type="Texture2D" uid="uid://bbhd88xfm80hm" path="res://Assets/enimy.png" id="4_3oq7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guf6u"]
+size = Vector2(17, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp3cu"]
+size = Vector2(13, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf8k0"]
+atlas = ExtResource("4_3oq7b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42kl2"]
+atlas = ExtResource("4_3oq7b")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh4ce"]
+atlas = ExtResource("4_3oq7b")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aljuy"]
+atlas = ExtResource("4_3oq7b")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ted6e"]
+atlas = ExtResource("4_3oq7b")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5jrq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf8k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42kl2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh4ce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aljuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ted6e")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_3oq7b"]
+offsets = PackedFloat32Array(0, 0.36936936)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pf8k0"]
+gradient = SubResource("Gradient_3oq7b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_3oq7b"]
+_data = [Vector2(0.02000001, 0), 0.0, 0.0, 0, 0, Vector2(0.40400004, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Enimy" type="CharacterBody2D" groups=["Enimy"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_vp3cu")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-9, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8.5, 8)
+shape = SubResource("RectangleShape2D_guf6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_vp3cu")
+
+[node name="LifeBar" parent="." instance=ExtResource("2_lggb4")]
+offset_left = -8.0
+offset_top = -12.0
+offset_right = 29.0
+offset_bottom = -4.0
+scale = Vector2(0.49087793, 0.29276943)
+max_value = 10.0
+value = 10.0
+texture_progress = ExtResource("3_xumpy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_a5jrq")
+animation = &"walking"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, 0)
+texture = SubResource("GradientTexture2D_pf8k0")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_3oq7b")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

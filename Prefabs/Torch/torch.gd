@@ -4,16 +4,19 @@ extends RigidBody2D
 
 var prox = false
 var player = null
+@onready var interact_text = $Label
+
+
 
 var _dialog_data: Dictionary = {
 	0: {
 		"faceset": "res://Dialog/Assets/faceset_player.png",
-		"dialog": "CARAI VIADO UMA TOCHA",
+		"dialog": "CARAI [wave][rainbow freq=.7 sat=.8 val=0.8 speed=3.0]VIADO[/rainbow][/wave] UMA TOCHA",
 		"title": "Player"
 	},
 	1: {
 		"faceset": "res://Assets/Icons/torch.png",
-		"dialog": "CARAI VIADO UMA MULHER DEPRESSIVA QUE VAI SE MATAR",
+		"dialog": "CARAI VIADO UMA MULHER [shake]DEPRESSIVA[/shake] QUE VAI SE [wave]MATAR[/wave]",
 		"title": "Tocha"
 	}
 }
@@ -31,6 +34,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$Label.position.y += -sin(Time.get_ticks_msec()*.010)*.2
+	
+	if Global.gamepad:
+		interact_text.text = "-X-"
+	else:
+		interact_text.text = "-E-"
 	
 	if prox:
 		if Input.is_action_just_pressed("e"):

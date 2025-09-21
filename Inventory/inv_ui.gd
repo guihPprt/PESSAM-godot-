@@ -9,6 +9,8 @@ var y_offset: float = 600
 @onready var columns: int = $NinePatchRect/GridContainer.columns
 @onready var selected_display := $NinePatchRect/NinePatchRect2/Sprite2D
 
+@onready var inst = $NinePatchRect/NinePatchRect/Label2
+
 var selected_index := 0
 
 func _ready() -> void:
@@ -63,7 +65,13 @@ func update_selection():
 	Slots[selected_index].modulate = Color(1, 1, 0)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("inv"):
+	
+	if Global.gamepad:
+		inst.text = "-X- Para Equipar                    -B- para soltar"
+	else:
+		inst.text = "-E- Para Equipar                    -Q- para soltar"
+	
+	if Input.is_action_just_pressed("inv") && !Global.paused:
 		if is_open:
 			close()
 		else:

@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=4 uid="uid://c4pbsg3uuoixp"]
+[gd_scene load_steps=14 format=4 uid="uid://c4pbsg3uuoixp"]
 
 [ext_resource type="Texture2D" uid="uid://dg5vhavpn5j4c" path="res://Assets/tileset.png" id="1_3xrbq"]
 [ext_resource type="Texture2D" uid="uid://ds3e06pgpaxgv" path="res://Assets/house1_bg.png" id="1_jbqd0"]
 [ext_resource type="PackedScene" uid="uid://dngwabivtpisl" path="res://Prefabs/Player/Player.tscn" id="2_0n0fo"]
 [ext_resource type="PackedScene" uid="uid://bu4e6vs2gnijc" path="res://Prefabs/Torch/Torch.tscn" id="4_vn3tm"]
 [ext_resource type="PackedScene" uid="uid://bbj5uvtv6iy28" path="res://Inventory/inv_ui.tscn" id="5_7u6cd"]
+[ext_resource type="PackedScene" uid="uid://b42yfxqd7r1lk" path="res://UI/stats_ui.tscn" id="6_21ahh"]
 [ext_resource type="PackedScene" uid="uid://cfveyhl8fhyrn" path="res://Phone/phone_ui.tscn" id="6_tbl1j"]
 [ext_resource type="PackedScene" uid="uid://c1lnf7h0lodoq" path="res://Prefabs/Window/window.tscn" id="6_ypwe8"]
 [ext_resource type="Script" uid="uid://chgvsdd83lvva" path="res://Scripts/controller.gd" id="7_u04th"]
+[ext_resource type="PackedScene" uid="uid://bbrkcmjh6lfvu" path="res://Prefabs/Enimy/enimy.tscn" id="10_5mb5f"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vn3tm"]
 blend_mode = 3
@@ -70,7 +72,7 @@ texture = ExtResource("1_3xrbq")
 
 [sub_resource type="TileSet" id="TileSet_jbqd0"]
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 3
+physics_layer_0/collision_layer = 255
 physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Fora"
@@ -92,8 +94,19 @@ region_rect = Rect2(0, 0, 512, 512)
 tile_map_data = PackedByteArray("AAD+/wEAAAAAAAMAAAD//wEAAAAAAAMAAAAAAAEAAAAAAAMAAAABAAEAAAAAAAMAAAACAAEAAAACAAMAAAADAAIAAAAAAAMAAAAEAAIAAAAAAAMAAAAFAAIAAAAAAAMAAAAGAAIAAAAAAAMAAAAHAAIAAAAAAAMAAAAIAAIAAAAAAAMAAAAJAAMAAAACAAQAAAAKAAMAAAAAAAMAAAALAAMAAAAAAAMAAAAMAAMAAAAAAAMAAAANAAMAAAAAAAMAAAAOAAMAAAAAAAMAAAAPAAMAAAAAAAMAAAAQAAMAAAAAAAMAAAARAAMAAAAAAAMAAAASAAMAAAAAAAMAAAASAAQAAAABAAMAAAARAAQAAAABAAMAAAAQAAQAAAABAAMAAAAPAAQAAAABAAMAAAAOAAQAAAABAAMAAAANAAQAAAABAAMAAAAMAAQAAAABAAMAAAALAAQAAAABAAMAAAAKAAQAAAABAAMAAAAJAAQAAAABAAMAAAAIAAQAAAABAAMAAAAHAAMAAAABAAMAAAAGAAMAAAABAAMAAAAGAAQAAAABAAMAAAAFAAQAAAABAAMAAAAEAAQAAAABAAMAAAADAAQAAAABAAMAAAAIAAMAAAABAAMAAAAHAAQAAAABAAMAAAAFAAMAAAABAAMAAAAEAAMAAAABAAMAAAADAAMAAAABAAMAAAACAAQAAAABAAMAAAACAAMAAAABAAMAAAACAAIAAAACAAQAAAABAAQAAAABAAMAAAABAAMAAAABAAMAAAABAAIAAAABAAMAAAAAAAQAAAABAAMAAAAAAAMAAAABAAMAAAAAAAIAAAABAAMAAAD//wQAAAABAAMAAAD//wMAAAABAAMAAAD//wIAAAABAAMAAAD+/wQAAAABAAMAAAD+/wMAAAABAAMAAAD+/wIAAAABAAMAAAAJAAIAAAACAAMAAAA=")
 tile_set = SubResource("TileSet_jbqd0")
 
-[node name="Player" parent="." node_paths=PackedStringArray("inv_ui") instance=ExtResource("2_0n0fo")]
+[node name="Window" parent="." instance=ExtResource("6_ypwe8")]
+position = Vector2(233, 17)
+
+[node name="Enimy2" parent="." instance=ExtResource("10_5mb5f")]
+position = Vector2(187, 32)
+
+[node name="Enimy" parent="." instance=ExtResource("10_5mb5f")]
+position = Vector2(64, 16)
+
+[node name="Player" parent="." node_paths=PackedStringArray("inv_ui", "cam") instance=ExtResource("2_0n0fo")]
 inv_ui = NodePath("../HUD/inv_ui")
+cam = NodePath("Camera2D")
+aura_zoom = 8.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -113,10 +126,9 @@ position = Vector2(120, 24)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="inv_ui" parent="HUD" instance=ExtResource("5_7u6cd")]
+[node name="StatsUI" parent="HUD" instance=ExtResource("6_21ahh")]
 
-[node name="Window" parent="." instance=ExtResource("6_ypwe8")]
-position = Vector2(233, 17)
+[node name="inv_ui" parent="HUD" instance=ExtResource("5_7u6cd")]
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("7_u04th")

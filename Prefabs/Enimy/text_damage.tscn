@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj36feihkvq3d"]
+
+[ext_resource type="FontFile" uid="uid://dn24mngx31dfh" path="res://Assets/Fonts/Early GameBoy.ttf" id="1_er0uw"]
+[ext_resource type="Script" uid="uid://dlfdtvfuivysi" path="res://Prefabs/Enimy/text_damage.gd" id="1_m2d7v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vp3cu"]
+radius = 8.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_xumpy"]
+font = ExtResource("1_er0uw")
+
+[node name="TextDamage" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 2.0
+linear_velocity = Vector2(400, -200)
+linear_damp_mode = 1
+script = ExtResource("1_m2d7v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vp3cu")
+
+[node name="Label" type="Label" parent="."]
+z_index = 10
+y_sort_enabled = true
+offset_left = -11.0
+offset_top = -5.0
+offset_right = 13.0
+offset_bottom = 5.0
+text = "-10"
+label_settings = SubResource("LabelSettings_xumpy")
+horizontal_alignment = 1

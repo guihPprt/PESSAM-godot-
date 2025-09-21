@@ -23,10 +23,10 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("jump") && _dialog.visible_ratio < 1:
-		_step = 0.01
+		_step = 0.001
 		return
 	
-	_step = 0.05
+	_step = 0.02
 	if Input.is_action_just_pressed("jump"):
 		_id += 1
 		if _id == data.size():
